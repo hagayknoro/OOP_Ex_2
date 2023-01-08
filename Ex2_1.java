@@ -56,7 +56,7 @@ public class Ex2_1 {
         int totalLines = 0;
         for (String file : fileNames) {
             // Create a new thread to count the lines in the file
-            Thread thread = new Thread(new LineCounterRunnable(file));
+            LineCounterThread thread = new LineCounterThread(file);
             // Start the thread
             thread.start();
             try {
@@ -67,17 +67,18 @@ public class Ex2_1 {
                 e.printStackTrace();
             }
             // Add the number of lines counted by the thread to the total
-            totalLines += LineCounterRunnable.getNumLines();
+            totalLines += thread.getNumLines();
         }
         return totalLines;
     }
 
-    private static class LineCounterRunnable implements Runnable {
+    private static class LineCounterThread extends Thread {
+
 
         private String file;
-        private static int numLines;
+        private int numLines;
 
-        public LineCounterRunnable(String file) {
+        public LineCounterThread(String file) {
             this.file = file;
         }
 
@@ -97,7 +98,7 @@ public class Ex2_1 {
             }
         }
 
-        public static int getNumLines() {
+        public int getNumLines() {
             return numLines;
         }
     }
