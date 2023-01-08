@@ -72,35 +72,11 @@ public class Ex2_1 {
         return totalLines;
     }
 
-    private static class LineCounterThread extends Thread {
 
 
-        private String file;
-        private int numLines;
+    public int getNumOfLinesThreadPool(String[] fileNames)
+    {
 
-        public LineCounterThread(String file) {
-            this.file = file;
-        }
-
-        public void run() {
-            try {
-                // Open the file
-                BufferedReader reader = new BufferedReader(new FileReader(file));
-                String line;
-                // Read each line and count it
-                while ((line = reader.readLine()) != null) {
-                    numLines++;
-                }
-                reader.close();
-            } catch (IOException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
-            }
-        }
-
-        public int getNumLines() {
-            return numLines;
-        }
     }
 }
 
