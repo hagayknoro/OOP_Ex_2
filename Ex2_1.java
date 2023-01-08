@@ -50,5 +50,58 @@ public class Ex2_1 {
         }
         return totalLines;
     }
+
+    public int getNumOfLinesThreads(String[] fileNames)
+    {
+        int totalLines = 0;
+        for (String file : fileNames) {
+            // Create a new thread to count the lines in the file
+            Thread thread = new Thread(new LineCounterRunnable(file));
+            // Start the thread
+            thread.start();
+            try {
+                // Wait for the thread to finish
+                thread.join();
+            } catch (InterruptedException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+            // Add the number of lines counted by the thread to the total
+            totalLines += LineCounterRunnable.getNumLines();
+        }
+        return totalLines;
+    }
+
+    private static class LineCounterRunnable implements Runnable {
+
+        private String file;
+        private static int numLines;
+
+        public LineCounterRunnable(String file) {
+            this.file = file;
+        }
+
+        public void run() {
+            try {
+                // Open the file
+                BufferedReader reader = new BufferedReader(new FileReader(file));
+                String line;
+                // Read each line and count it
+                while ((line = reader.readLine()) != null) {
+                    numLines++;
+                }
+                reader.close();
+            } catch (IOException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+        }
+
+        public static int getNumLines() {
+            return numLines;
+        }
+    }
 }
+
+
 
