@@ -2,7 +2,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Ex2_1 {
 
@@ -72,11 +78,31 @@ public class Ex2_1 {
         return totalLines;
     }
 
-
-
     public int getNumOfLinesThreadPool(String[] fileNames)
     {
-
+        int totalLines = 0;
+        // Create a thread pool with one thread for each file
+        ExecutorService executor = Executors.newFixedThreadPool(fileNames.length);
+        // Create a list to store the futures that are returned by the threads
+        List<Future<Integer>> futures = new ArrayList<>();
+        // Submit a task for each file
+        for (String file : fileNames) {
+            LineCounterCallable task = new LineCounterCallable(file);
+            Future<Integer> future = executor.submit(task);
+            futures.add(future);
+        }
+        // Wait for all the tasks to complete and add their results to the total
+        for (Future<Integer> future : futures) {
+            try {
+                totalLines += future.get();
+            } catch (InterruptedException | ExecutionException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+        }
+        // Shutdown the thread pool
+        executor.shutdown();
+        return totalLines;
     }
 }
 
