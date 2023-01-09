@@ -1,3 +1,5 @@
+package Ex2_1;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -57,21 +59,20 @@ public class Ex2_1 {
         return totalLines;
     }
 
-    public int getNumOfLinesThreads(String[] fileNames) throws InterruptedException {
+    public int getNumOfLinesThreads(String[] fileNames){
         int totalLines = 0;
         for (String file : fileNames) {
             // Create a new thread to count the lines in the file
             LineCounterThread thread = new LineCounterThread(file);
             // Start the thread
             thread.start();
-            thread.join();
-//            try {
-//                // Wait for the thread to finish
-//                thread.join();
-//            } catch (InterruptedException e) {
-//                System.out.println("An error occurred.");
-//                e.printStackTrace();
-//            }
+            try {
+                // Wait for the thread to finish
+                thread.join();
+            } catch (InterruptedException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
             // Add the number of lines counted by the thread to the total
             totalLines += thread.getNumLines();
         }

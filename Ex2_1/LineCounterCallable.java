@@ -1,18 +1,20 @@
+package Ex2_1;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.concurrent.Callable;
 
-public class LineCounterThread extends Thread {
-
+public class LineCounterCallable  implements Callable<Integer> {
 
     private String file;
-    private int numLines;
 
-    public LineCounterThread(String file) {
+    public LineCounterCallable(String file) {
         this.file = file;
     }
 
-    public void run() {
+    public Integer call() {
+        int numLines = 0;
         try {
             // Open the file
             BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -26,9 +28,6 @@ public class LineCounterThread extends Thread {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-    }
-
-    public int getNumLines() {
         return numLines;
     }
 }
