@@ -22,7 +22,7 @@ Fot this method we create a class name `LineCounterThread`, and we implement `ru
 This method we use ThreadPool.    
 We implements `call` function in class we create. In the main we create ThreaPool for count lines of multiple files in parallel.     
 For this method we create `LineCounterCallable` class, and implement `call` function.     
-### We add UML Diagram For more explantion.       
+### UML Diagram For visual explantion.       
 ![project_diagram](https://user-images.githubusercontent.com/118724971/211522147-8fd58dde-8589-4b13-a178-d5612d56f049.png)
 
 ## Measure Times     
