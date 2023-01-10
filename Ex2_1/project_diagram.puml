@@ -1,36 +1,35 @@
 @startuml
-participant Actor
-Actor -> main : main
-activate main
-main -> Ex2_1 : createTextFiles
-activate Ex2_1
-Ex2_1 --> main
-deactivate Ex2_1
-main -> Ex2_1 : getNumOfLines
-activate Ex2_1
-Ex2_1 --> main
-deactivate Ex2_1
-main -> Ex2_1 : getNumOfLinesThreads
-activate Ex2_1
-create LineCounterThread
-Ex2_1 -> LineCounterThread : new
-activate LineCounterThread
-LineCounterThread --> Ex2_1
-deactivate LineCounterThread
-Ex2_1 --> main
-deactivate Ex2_1
-main -> Ex2_1 : getNumOfLinesThreadPool
-activate Ex2_1
-create LineCounterCallable
-Ex2_1 -> LineCounterCallable : new
-activate LineCounterCallable
-LineCounterCallable --> Ex2_1
-deactivate LineCounterCallable
-Ex2_1 --> main
-deactivate Ex2_1
-main -> main : cleanFinder
-activate main
-main --> main
-deactivate main
-return
+class Ex2_1{
++String[] createTextFiles(int n, int seed, int bound)
++int getNumOfLines(String[] fileNames)
++int getNumOfLinesThreads(String[] fileNames)
++int getNumOfLinesThreadPool(String[] fileNames)
+
+}
+class LineCounterCallable implements Callable{
+-String file
++LineCounterCallable(String file)
++Integer call()
+}
+class LineCounterThread extends Thread{
+-String file
+-int numLines
++LineCounterThread(String file)
++void run()
++int getNumLines()
+}
+class Main{
++void cleanFinder(int fileNumber)
+}
+Interface Callable{
+Integer call()
+}
+class Thread{
+void run()
+}
+
+Main --> Ex2_1
+Ex2_1 --> LineCounterCallable
+Ex2_1 --> LineCounterThread
+
 @enduml
