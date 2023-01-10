@@ -6,17 +6,21 @@ public class Task<T> implements Callable<T>,Comparable <Task<T>>{
     private Callable<T> func;
     private Integer Priorty;
 
-    public Task(Callable<T> callable,TaskType taskType){
+    private Task(Callable<T> callable,TaskType taskType){
         this.func = callable;
         Priorty = taskType.getPriorityValue();
     }
-    public Task(Callable<T> callable){
+    private Task(Callable<T> callable){
         this.func = callable;
         Priorty=3;
     }
 
     public static Task createTask(Callable callable,TaskType taskType){
         return new Task(callable, taskType);
+    }
+
+    public static Task createTask(Callable callable){
+        return new Task(callable);
     }
 
 

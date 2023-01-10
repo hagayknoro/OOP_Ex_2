@@ -4,7 +4,7 @@ import java.io.File;
 
 public class Main {
     public static void main(String[] args){
-        int n =1000;
+        int n =100;
         long starTime, endTime;
         float sec;
         //Create files
