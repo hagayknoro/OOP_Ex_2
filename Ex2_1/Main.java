@@ -38,7 +38,6 @@ public class Main {
     }
     public static void cleanFinder(int fileNumber)
     {
-      int num = fileNumber;
       for (int i = 0 ; i <num ; i++){
           String fileName = ("file_"+i+".txt");
           File file = new File(fileName);
