@@ -32,7 +32,9 @@ Java provides the Executor framework which is centered around the Executor inter
 They allow you to take advantage of threading, but focus on the tasks that you want the thread to perform, instead of thread mechanics.
 To use thread pools, we first create a object of ExecutorService and pass a set of tasks to it. ThreadPoolExecutor class allows to set the core and maximum pool size.The runnables that are run by a particular thread are executed sequentially.
 
-## Method 1    [Move to Top](#OOP_Ex_2)
+
+[Move to Top](#OOP_Ex_2)
+## Method 1    
 Method 1 implement in `getNumOfLines` function.    
 In this function we pasing over eath file and cuonting his line number we do so for all the files we got their name in the arr.   
 ## Method 2    
@@ -47,6 +49,7 @@ For this method we create `LineCounterCallable` class, and implement `call` func
 ### UML Diagram For visual explantion.       
 ![project_diagram](https://user-images.githubusercontent.com/118724971/211522147-8fd58dde-8589-4b13-a178-d5612d56f049.png)
 
+[Move to Top](#OOP_Ex_2)
 ## Measure Times     
 For deep conclusion we measure time three times, in first time we create 100 files, second time we create 500 files and in the three time we create 1000 files.    
 ### 100 Files    
@@ -58,11 +61,12 @@ For deep conclusion we measure time three times, in first time we create 100 fil
 ### 1000 Files     
 <img width="269" alt="image" src="https://user-images.githubusercontent.com/118724971/211596325-7333a927-e362-4c74-9223-c7407d7bde4d.png">     
 
+[Move to Top](#OOP_Ex_2)
 ## Conclusion     
 The conclusion of the time measures we did, is that runing the same pross without theads taking way longer then with thread becuse withot thred we need to wait for each file line cunting instad of leting the computer use his resurses and doing it parllel. 
 When we use thread-pool the time improved even more and that becuse the thread-pool creats in advens all the threds and execut them parllel without whiting the thread to creat like we needed in the the thread implement.
 
-
+[Move to Top](#OOP_Ex_2)
 # Part 2    
 In this part we use in Design Pattern Factory.   
 ## Factory    
@@ -71,7 +75,7 @@ In Factory pattern, we create object without exposing the creation logic to the 
 
 The factory design pattern is used when we have a superclass with multiple sub-classes and based on input, we need to return one of the sub-class. This pattern takes out the responsibility of the instantiation of a class from the client program to the factory class. Let’s first learn how to implement a factory design pattern in java and then we will look into factory pattern advantages. We will see some of the factory design pattern usage in JDK. Note that this pattern is also known as Factory Method Design Pattern.
 
-
+[Move to Top](#OOP_Ex_2)
 ## OverView    
 The Java platform includes a package of concurrency utilities. These are classes that are designed to
 be used as building blocks in building concurrent classes and applications.
@@ -99,6 +103,7 @@ scheduler preempts the executing thread schedules the thread with the higher pri
 The Scheduler may also invoke a different thread to run if the currently running thread changes state
 from RUNNABLE to a different state such as BLOCKED, WAITING or TERMINATED.       
 
+[Move to Top](#OOP_Ex_2)
 ### UML Diagram For visual explantion.  
 ![Diagaram2](https://user-images.githubusercontent.com/118724971/211613449-96952b63-e01a-49f2-8a51-47607f615ab8.png)   
 
