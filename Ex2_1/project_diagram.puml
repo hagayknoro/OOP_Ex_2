@@ -1,4 +1,6 @@
 @startuml
+
+
 class Ex2_1{
 +String[] createTextFiles(int n, int seed, int bound)
 +int getNumOfLines(String[] fileNames)
