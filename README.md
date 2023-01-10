@@ -32,7 +32,7 @@ Java provides the Executor framework which is centered around the Executor inter
 They allow you to take advantage of threading, but focus on the tasks that you want the thread to perform, instead of thread mechanics.
 To use thread pools, we first create a object of ExecutorService and pass a set of tasks to it. ThreadPoolExecutor class allows to set the core and maximum pool size.The runnables that are run by a particular thread are executed sequentially.
 
-## Method 1   
+## Method 1    [Move to Top](#OOP_Ex_2)
 Method 1 implement in `getNumOfLines` function.    
 In this function we pasing over eath file and cuonting his line number we do so for all the files we got their name in the arr.   
 ## Method 2    
