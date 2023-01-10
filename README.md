@@ -62,4 +62,46 @@ For deep conclusion we measure time three times, in first time we create 100 fil
 The conclusion of the tume measures we did we can absorv that runing the same pross without theads taking way longer then with thred becuse withot thred we need to wait for each file line cunting instad of leting the computer use his resurses 
 
 
+# Part 2    
+In this part we use in Design Pattern Factory.   
+## Factory    
+Factory pattern is one of the most used design patterns in Java. This type of design pattern comes under creational pattern as this pattern provides one of the best ways to create an object.     
+In Factory pattern, we create object without exposing the creation logic to the client and refer to newly created object using a common interface.    
+
+The factory design pattern is used when we have a superclass with multiple sub-classes and based on input, we need to return one of the sub-class. This pattern takes out the responsibility of the instantiation of a class from the client program to the factory class. Let’s first learn how to implement a factory design pattern in java and then we will look into factory pattern advantages. We will see some of the factory design pattern usage in JDK. Note that this pattern is also known as Factory Method Design Pattern.
+
+
+## OverView    
+The Java platform includes a package of concurrency utilities. These are classes that are designed to
+be used as building blocks in building concurrent classes and applications.
+Handling the design complexity for advanced use-cases demands developers to extend the
+functionality of these built-in concurrency utilities.    
+
+According to Javadoc, a thread is a thread of execution in a program. The Java Virtual Machine (JVM)
+allows a Java application to have multiple threads of execution running concurrently. The Thread class
+supports the creation of platform threads that are typically mapped 1:1 to kernel threads, scheduled
+by the operating system.
+The JVM implements platform threads as wrappers around operating system (OS) threads and will
+usually have a large stack and other resources that are maintained by the operating system. The
+Thread class defines 6 constructors that declare a Runnable as parameter.
+Runnable is an interface representing an operation that does not return a value. This operation may
+be executed in a separate thread, i.e., asynchronously using the run() method.     
+
+The Java Virtual machine (JVM) schedules threads using a preemptive, priority-based policy.
+Every thread has a priority ʹ Threads with higher priority are executed in preference to threads with
+lower priority. When code running in a thread creates a new Thread object, the new thread has its
+initial priority set automatically equal to the priority of the creating thread.
+If a thread was created using a different ThreadGroup, the priority of the newly created thread is the
+smaller of priority of the thread creating it and the maximum permitted priority of the thread group.     
+If a thread with a higher priority than the currently running thread enters the RUNNABLE state, the
+scheduler preempts the executing thread schedules the thread with the higher priority to run.
+The Scheduler may also invoke a different thread to run if the currently running thread changes state
+from RUNNABLE to a different state such as BLOCKED, WAITING or TERMINATED.       
+
+### UML Diagram For visual explantion.  
+![Diagaram2](https://user-images.githubusercontent.com/118724971/211613449-96952b63-e01a-49f2-8a51-47607f615ab8.png)   
+
+
+Hope you enjoyed :blush:
+
 
