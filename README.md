@@ -59,7 +59,8 @@ For deep conclusion we measure time three times, in first time we create 100 fil
 <img width="269" alt="image" src="https://user-images.githubusercontent.com/118724971/211596325-7333a927-e362-4c74-9223-c7407d7bde4d.png">     
 
 ## Conclusion     
-The conclusion of the tume measures we did we can absorv that runing the same pross without theads taking way longer then with thred becuse withot thred we need to wait for each file line cunting instad of leting the computer use his resurses 
+The conclusion of the time measures we did, is that runing the same pross without theads taking way longer then with thread becuse withot thred we need to wait for each file line cunting instad of leting the computer use his resurses and doing it parllel. 
+When we use thread-pool the time improved even more and that becuse the thread-pool creats in advens all the threds and execut them parllel without whiting the thread to creat like we needed in the the thread implement.
 
 
 # Part 2    
