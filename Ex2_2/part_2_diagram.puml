@@ -1,6 +1,55 @@
 @startuml
-'https://plantuml.com/sequence-diagram
-
-class CastingTask{
+class CastingTask extends FutureTask implements Comparable {
+- Task<T> tempTask
++ CastingTask(Task<T> task)
++ Task<T> getTempTask()
++ void setTempTask(Task<T> tempTask)
++ int compareTo(CastingTask o)
 }
+class CustomExecutor extends ThreadPoolExecutor {
+- int [] Priorties
++ CustomExecutor()
++ <T> Future<T> submitTask(Task task)
++ <T> Future<T> submit(Callable <T> task)
++ <T> Future<T> submit(Callable<T> task, TaskType taskType)
++ int getCurrentMax()
++ void gracefullyTerminate()
+# void beforeExecute(Thread t, Runnable r)
+}
+class Task implements Callable,Comparable {
+- Callable<T> func
+- Integer Priorty
+- Task(Callable<T> callable,TaskType taskType)
+- Task(Callable<T> callable)
++ Task<T> createTask(Callable callable,TaskType taskType)
++ Task<T> createTask(Callable callable)
++ Callable<T> getFunc()
++ void setFunc(Callable<T> func)
++ Integer getPriorty()
++ void setPriorty(Integer priorty)
++ int compareTo(Task<T> o)
++ T call() throws Exception
++ String toString()
+}
+enum TaskType {
+- int typePriority
+- TaskType(int priority)
++ void setPriority(int priority)
++ int getPriorityValue()
++ boolean validatePriority(int priority)
+}
+Interface Callable{
++ T call()
+}
+Interface Comparable{
++ int CompareTo()
+}
+class FutureTask{
+}
+class ThreadPoolExecutor{
+}
+
+Task -- TaskType
+CustomExecutor -- Task
+Task -- CastingTask
 @enduml
