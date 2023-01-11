@@ -12,7 +12,34 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+/**
+
+ The Ex2_1 class provides several methods for working with text files.
+
+ <p>It contains three main functionalities:
+ <ul>
+ <li>createTextFiles: creates N text files with random number of lines within the given range.</li>
+ <li>getNumOfLines: Given an array of file names, returns the total number of lines in those files.</li>
+ <li>getNumOfLinesThreads: Given an array of file names, returns the total number of lines in those files using threads.</li>
+ <li>getNumOfLinesThreadPool: Given an array of file names, returns the total number of lines in those files using thread pool.</li>
+ </ul>
+ @author Author Yhonatan Fridman
+ @author Author Hagay Knorovich
+
+ @version 1.0
+
+ @since Release
+ */
 public class Ex2_1 {
+
+    /**
+
+     Creates n number of text files, with a random number of lines within a given bound
+     @param n The number of files to be created
+     @param seed The seed for the random number generator
+     @param bound The upper bound for the number of lines generated for each file
+     @return An array of filenames created
+     */
 
     public static String[] createTextFiles(int n, int seed, int bound)
     {
@@ -38,6 +65,13 @@ public class Ex2_1 {
         return files;
     }
 
+    /**
+
+     Given an array of file names, returns the total number of lines in those files
+     @param fileNames The array of file names
+     @return The total number of lines in the specified files
+     */
+
     public static int getNumOfLines(String[] fileNames)
     {
         int totalLines = 0;
@@ -59,6 +93,15 @@ public class Ex2_1 {
         return totalLines;
     }
 
+    /**
+     * Given an array of file names, returns the total number of lines in those files using threads.
+     *
+     * <p>For each file in the array, a new {@link LineCounterThread} is created and started, and the result of each thread is added
+     * to the total number of lines.
+     *
+     * @param fileNames The array of file names
+     * @return The total number of lines in the specified files
+     */
     public int getNumOfLinesThreads(String[] fileNames){
         int totalLines = 0;
         for (String file : fileNames) {
@@ -79,6 +122,15 @@ public class Ex2_1 {
         return totalLines;
     }
 
+    /**
+     * Given an array of file names, returns the total number of lines in those files using a thread pool.
+     *
+     * <p>A fixed thread pool with one thread for each file is created, and a {@link LineCounterCallable} task is submitted for each file.
+     * The results of the tasks are collected and added to the total number of lines.
+     *
+     * @param fileNames The array of file names
+     * @return The total number of lines in the specified files
+     */
     public int getNumOfLinesThreadPool(String[] fileNames)
     {
         int totalLines = 0;
