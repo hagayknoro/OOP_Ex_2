@@ -133,9 +133,10 @@ public class Ex2_1 {
      */
     public int getNumOfLinesThreadPool(String[] fileNames)
     {
+        int amountOfCours = Runtime.getRuntime().availableProcessors() - 1;
         int totalLines = 0;
         // Create a thread pool with one thread for each file
-        ExecutorService executor = Executors.newFixedThreadPool(fileNames.length);
+        ExecutorService executor = Executors.newFixedThreadPool(amountOfCours);
         // Create a list to store the futures that are returned by the threads
         List<Future<Integer>> futures = new ArrayList<>();
         // Submit a task for each file
